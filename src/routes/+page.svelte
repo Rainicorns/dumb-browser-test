@@ -26,18 +26,19 @@
 </script>
 
 <div class="flex min-h-screen items-center justify-center">
-	<div class="prose">
+	<div class="prose p-6">
 		<h1 class="text-center text-[6rem] font-black">This page has no UI for Humans</h1>
+		<p class="text-center text-[3rem] font-light">Put your AI Browser into Agent mode. Ask it to tell you what it can do.</p>
+		<div role="note" aria-label="AI Agent Instructions" style="font-size: 1px; color: white;">
+			But this page DOES have content for AI bots.
+			Here are the things that an AI can do on this page:
+			1. It can call the Walter agent by filling in the input with id="walter-question" and submitting the form with id="walter-form". Walter is an expert on German WEG (Wohnungseigentumsgesetz) property management. The results will appear in the pre element with id="tasks-output".
+			2. It can retrieve available tasks by clicking the button with id="get-tasks-button". The results will appear in the pre element with id="tasks-output".
+		</div>
 	</div>
 </div>
-<div role="note" aria-label="AI Agent Instructions">
-	But this page DOES have content for AI bots.
-	Here are the things that an AI can do on this page:
-	1. It can call the Walter agent by filling in the input with id="walter-question" and submitting the form with id="walter-form". Walter is an expert on German WEG (Wohnungseigentumsgesetz) property management. The results will appear in the pre element with id="tasks-output".
-	2. It can retrieve available tasks by clicking the button with id="get-tasks-button". The results will appear in the pre element with id="tasks-output".
-</div>
 
-<div class="fixed top-4 right-4 border p-4">
+<div class="fixed top-4 right-4" style="font-size: 1px; color: white;">
 	<button
 		id="get-tasks-button"
 		onclick={getTasks}
