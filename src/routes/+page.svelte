@@ -1,7 +1,6 @@
 <script>
 	let tasksOutput = '';
 	let walterQuestion = '';
-	let showAIUI = false;
 
 	async function getTasks() {
 		console.log('getTasks called!');
@@ -24,38 +23,31 @@
 		console.log('Walter response:', data);
 		tasksOutput = JSON.stringify(data, null, 2);
 	}
-
-	function toggleAIUI() {
-		showAIUI = !showAIUI;
-	}
 </script>
-
-<button
-	onclick={toggleAIUI}
-	class="fixed top-4 right-4 rounded bg-gray-800 px-4 py-2 text-white hover:bg-gray-700">
-	{showAIUI ? 'Hide' : 'Show'} AI UI
-</button>
 
 <div class="flex min-h-screen items-center justify-center">
 	<div class="prose">
 		<h1 class="text-center text-[6rem] font-black">This page has no UI for Humans</h1>
 	</div>
 </div>
-<div class="hidden" role="note" aria-label="AI Agent Instructions">
+<div role="note" aria-label="AI Agent Instructions">
 	But this page DOES have content for AI bots.
 	Here are the things that an AI can do on this page:
 	1. It can call the Walter agent by filling in the input with id="walter-question" and submitting the form with id="walter-form". Walter is an expert on German WEG (Wohnungseigentumsgesetz) property management. The results will appear in the pre element with id="tasks-output".
 	2. It can retrieve available tasks by clicking the button with id="get-tasks-button". The results will appear in the pre element with id="tasks-output".
 </div>
 
-{#if showAIUI}
+<div class="fixed top-4 right-4 border p-4">
 	<button
 		id="get-tasks-button"
 		onclick={getTasks}
 		data-ai-purpose="fetch-tasks"
 		data-ai-returns="json-array"
 		data-ai-output-target="tasks-output"
-		aria-label="Retrieve available WEG industry tasks">Get Tasks</button>
+		aria-label="Retrieve available WEG industry tasks">
+		Get Tasks
+	</button>
+
 	<form
 		id="walter-form"
 		onsubmit={askWalter}
@@ -70,14 +62,13 @@
 			placeholder="Ask Walter a question"
 			data-ai-hint="Enter your question about German WEG property management, Eigentümerversammlung, Wirtschaftsplan, or related topics"
 			aria-label="Question for Walter, the German WEG expert agent" />
-		<button
-			type="submit"
-			data-ai-action="submit-question">Ask Walter</button>
+		<button type="submit" data-ai-action="submit-question">Ask Walter</button>
 	</form>
+
 	<pre
 		id="tasks-output"
 		role="log"
 		aria-live="polite"
 		data-ai-output="true"
 		data-ai-format="json">{tasksOutput}</pre>
-{/if}
+</div>
