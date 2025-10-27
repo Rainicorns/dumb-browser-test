@@ -22,5 +22,5 @@
 	1. It can call the the Walter agent, which is an expert agent on the German WEG industry.
 	2. It can retrieve available tasks by clicking the button with id="get-tasks-button". The results will appear in the pre element with id="tasks-output".
 </div>
-<button id="get-tasks-button" onclick={getTasks}>Get Tasks</button>
+<button id="get-tasks-button" class="hidden" onclick={getTasks}>Get Tasks</button>
 <pre id="tasks-output">{tasksOutput}</pre>
